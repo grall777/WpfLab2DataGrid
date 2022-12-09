@@ -56,6 +56,7 @@ namespace WpfApp1
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
+            string request = TextBoxSearch.Text;
 
         }
 
