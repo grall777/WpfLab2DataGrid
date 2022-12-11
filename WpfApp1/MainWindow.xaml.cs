@@ -56,7 +56,30 @@ namespace WpfApp1
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
-            string request = TextBoxSearch.Text;
+            
+            try
+            {
+
+                string request = TextBoxSearch.Text;
+                User user = new User { Name = request };
+                using (UsersContext db = new UsersContext())
+                {
+                    var list = db.Users.ToList();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if (list[i].Name == request)
+                        {
+                            (UsersGrid.ItemContainerGenerator.ContainerFromIndex(i) as DataGridRow).Background = Brushes.Aqua;
+                            MessageBox.Show($"Пользователь найден.");
+                        }
+                    }
+                }
+                
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Пользователь не найден");
+            }
 
         }
 
@@ -81,6 +104,15 @@ namespace WpfApp1
             UsersGrid.ItemsSource = db.Users.Local.ToBindingList();
 
             this.Closing += MainWindow_Closing;
+        }
+
+
+        private void ButtonConnect_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Resources["ConnectStr"] = textBox_Connect.Text;
+            //db = new UsersContext((string)App.Current.Resources["ConnectStr"]);
+            db.Users.Load();
+            UsersGrid_Loaded(sender, e);
         }
     }
 }

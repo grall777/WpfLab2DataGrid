@@ -5,27 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
+        Title="MainWindow" Height="450" Width="800" Background="White">
     <Window.Resources>
         <Style TargetType="Button">
-            <Setter Property="Margin" Value="20 8 20 8" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="5" />
         </Style>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*">
 
-        <Button x:Name="ButtonAdd" Content="Добавить" Margin="25,361,0,0" VerticalAlignment="Top" Height="41" Width="123" Click="ButtonAdd_Click" Grid.Column="1" HorizontalAlignment="Left"/>
-        <DataGrid IsReadOnly="True" ColumnWidth="*" Name="UsersGrid" Height="328" Margin="25,10,25,0" VerticalAlignment="Top" d:ItemsSource="{d:SampleData ItemCount=0}" Loaded="UsersGrid_Loaded" Grid.Column="1"/>
-        <Button x:Name="ButtonRemove" Content="Удалить" HorizontalAlignment="Left" Margin="153,361,0,0" VerticalAlignment="Top" Height="41" Width="131" Click="ButtonRemove_Click" Grid.Column="1"/>
-        <Button x:Name="ButtonEdit" Content="Редактировать" HorizontalAlignment="Left" Margin="289,361,0,0" VerticalAlignment="Top" Height="41" Width="131" Click="ButtonEdit_Click" Grid.Column="1"/>
-        <TextBox x:Name="TextBoxSearch" HorizontalAlignment="Left" Margin="437,362,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="202" Height="40" Grid.Column="1"/>
-        <Button x:Name="ButtonSearch" Content="Поиск" HorizontalAlignment="Left" Margin="650,362,0,0" VerticalAlignment="Top" Height="41" Width="61" Click="ButtonSearch_Click" Grid.Column="1"/>
-        <Button x:Name="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Margin="716,361,0,0" VerticalAlignment="Top" Height="41" Width="60" Click="ButtonRefresh_Click" Grid.Column="1"/>
+            </RowDefinition>
+            <RowDefinition Height="4*">
+
+            </RowDefinition>
+            <RowDefinition Height="*">
+
+            </RowDefinition>
+
+        </Grid.RowDefinitions>
+
+        <Button x:Name="ButtonAdd" Grid.Row="2" Grid.Column = "0"  Content="Добавить" Margin="10" VerticalAlignment="Stretch" Click="ButtonAdd_Click" HorizontalAlignment="Stretch">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <DataGrid IsReadOnly="True" Grid.Row="1" Grid.ColumnSpan="6" ColumnWidth="*" Name="UsersGrid" Margin="10" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=0}" Loaded="UsersGrid_Loaded" Grid.Column="0"/>
+        <Button x:Name="ButtonRemove" Grid.Row="2" Content="Удалить" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch" Click="ButtonRemove_Click" Grid.Column="1">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonEdit" Grid.Row="2" Content="Редактировать" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch" Click="ButtonEdit_Click" Grid.Column="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBox x:Name="TextBoxSearch" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="10" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" Grid.Column="3"/>
+        <Button x:Name="ButtonSearch" Grid.Row="2" Content="Поиск &#xD;&#xA;(name)" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch" Click="ButtonSearch_Click" Grid.Column="5">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonRefresh" Grid.Row="0" Content="Обновить" HorizontalAlignment="Stretch" Margin="10" VerticalAlignment="Stretch" Click="ButtonRefresh_Click" Grid.Column="5">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="ButtonConnect" Grid.Row="0" Content="Подключиться" Margin="10" VerticalAlignment="Stretch" Click="ButtonConnect_Click" Grid.Column="0" HorizontalAlignment="Stretch">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <TextBox x:Name="textBox_Connect" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" HorizontalAlignment="Stretch" Margin="10" TextWrapping="Wrap" Text="Data Source=DESKTOP-6HMGKDM\MSSQLSERVER02;Initial Catalog=Users;Integrated Security=True" VerticalAlignment="Stretch"/>
+
     </Grid>
 
 </Window>
